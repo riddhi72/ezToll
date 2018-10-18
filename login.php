@@ -13,11 +13,11 @@
                                   ON User.u_id=Driver.fk_uid
                                   WHERE Driver.licno = '$licno'
                                 ";
-        $driver_row = mysqli_fetch_row(mysqli_query($conn, $get_driverList_query)); 
-        if ($driver_row[2] == $pwd) {
+        $driver_row = mysqli_fetch_array(mysqli_query($conn, $get_driverList_query)); 
+        if ($driver_row['password'] == $pwd) {
             $_SESSION['message'] = "Login Successful.";
-            $_SESSION['driver_name'] = $driver_row[3];
-            $_SESSION['licno'] = $driver_row[1];
+            $_SESSION['driver_name'] = $driver_row['uname'];
+            $_SESSION['licno'] = $driver_row['licno'];
             header("location: home.php");           
         }
         else {
