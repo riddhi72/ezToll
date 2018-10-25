@@ -35,30 +35,35 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script type="text/javascript" src="style/login.js"></script>
 </head>
 <body>
-    <h2>Driver - Login</h2>
-    <?php
-        if (isset($_SESSION['message'])) {
-            echo "<div>", $_SESSION['message'], "</div>";
-            unset($_SESSION['message']);    
-        }
-    ?>
-    <form method="post" action="login.php">
-        <div class="input-group">
-            <label>Licence No.</label>
-            <input type="text" name="licno">
+    
+    <form class="form" name='Login' method="post" action="login.php">
+        <h2>Driver - Login</h2>
+        <?php
+            if (isset($_SESSION['message'])) {
+                echo "<div>", $_SESSION['message'], "</div>";
+                unset($_SESSION['message']);    
+            }
+        ?>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="licno" placeholder="License Number" required>
         </div>
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password">
+        <div class="input-box">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
         </div>
-        <div class="input-group">
-            <button type="submit" class="btn" name="login_driver">Login</button>
+        <div class="input-box">
+            <input type="submit" value="Login" name="login_driver">
         </div>
         <p>
             Not a member yet ? <a href="register.php">Sign up</a>
         </p>
-    </form>    
+    </form> 
+
+
 </body>
 </html>

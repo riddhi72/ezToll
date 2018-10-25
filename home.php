@@ -21,6 +21,7 @@
 <html>
 <head>
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style/home.css">
 </head>
 <body>
 	<?php
@@ -30,45 +31,47 @@
 		}
 	?>
 
-    <h2>Driver-Home</h2>
-    <h4>Welcome, <?php echo $_SESSION['driver_name']; ?> </h4>
-    
-    <form id="form" method="post" action="home.php">
-    	<div class="input-group">
-    		<label>What are you driving today ?</label>
-    		<br>
-        	<select name ="vehToday">
-        		<?php
-        		while($vehicle_row = mysqli_fetch_array($vehicle_result))
-        		{
-        			echo "<option value='" .$vehicle_row['plateno']. "'>" .$vehicle_row['plateno']. "  " .$vehicle_row['VType']. "</option>";
-        			
-        		}
-        		?>
-        	</select>
-        </div>
-    	<br><br>
-	    <div class="input-group">  
-	        <label>Which toll will you arrive at ?</label>
-	        <br>
-	        <select name="tollToday">
-	        	<option value="Vashi Toll Plaza">Vashi Toll Plaza</option>
-	        	<option value="Airoli Toll Plaza">Airoli Toll Plaza</option>
-	        	<option value="Dahisar Toll Plaza">Dahisar Toll Plaza</option>
-	        	<option value="Mulund Eastern Express Highway Toll Plaza">Mulund Eastern Express Highway Toll Plaza</option>
-	        	<option value="Mulund LBS Marg Toll Plaza">Mulund LBS Marg Toll Plaza</option>
-	        </select>
-	    </div>
-	    <br><br>
-	    <div class="input-group">
-	            <button type="submit" class="btn" name="next">Next</button>
-	    </div>
+    <h1>Driver-Home</h1>
+    <h3 align="right"><a href="driver_history.php">Check Previous Transactions</a></h3>
+    <h2 align="center">Welcome, <?php echo $_SESSION['driver_name']; ?> ! </h2>
+
+    <form id="form" method="post" action="home.php" style="border:1px solid #ccc;text-align:center;">
+    	<div class="container">
+	    	<div class="input-group">
+	    		<label><b>Which vehicle are you driving today?</b></label>
+	    		<br>
+	        	<select name ="vehToday">
+	        		<?php
+	        		while($vehicle_row = mysqli_fetch_array($vehicle_result))
+	        		{
+	        			echo "<option value='" .$vehicle_row['plateno']. "'>" .$vehicle_row['plateno']. "  " .$vehicle_row['VType']. "</option>";
+	        			
+	        		}
+	        		?>
+	        	</select>
+	        </div>
+	    	<br><br>
+		    <div class="input-group">  
+		    	<label><b>Which toll are you heading towards?</b></label>
+		        <br>
+		        <select name="tollToday">
+		        	<option value="Vashi Toll Plaza">Vashi Toll Plaza</option>
+		        	<option value="Airoli Toll Plaza">Airoli Toll Plaza</option>
+		        	<option value="Dahisar Toll Plaza">Dahisar Toll Plaza</option>
+		        	<option value="Mulund Eastern Express Highway Toll Plaza">Mulund Eastern Express Highway Toll Plaza</option>
+		        	<option value="Mulund LBS Marg Toll Plaza">Mulund LBS Marg Toll Plaza</option>
+		        </select>
+		    </div>
+		    <br><br>
+		    <div class="input-group">
+		            <button type="submit" class="loginbtn" name="next">Next</button>
+		    </div>
+		</div>
 	</form>
 
+	<br><br>
+	<h3><a style="float:right" href="logout.php"> Logout</a></h3>
 
-	<!--Use this for logout in nav-->
-	<br><br><br><br>
-    <div><a href="logout.php">Logout</a></div>
 
 </body>
 

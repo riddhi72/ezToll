@@ -17,6 +17,7 @@
         if ($staff_row[2] == $pwd) {
             $_SESSION['message'] = "Login Successful.";
             $_SESSION['staff_name'] = $staff_row[3];
+            $_SESSION['badge_no'] = $staff_row[1];
             header("location: staff_home.php");           
         }
         else {
@@ -34,30 +35,33 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script type="text/javascript" src="style/login.js"></script>
 </head>
 <body>
-    <h2>Staff - Login</h2>
-    <?php
-        if (isset($_SESSION['message'])) {
-            echo "<div>", $_SESSION['message'], "</div>";
-            unset($_SESSION['message']);    
-        }
-    ?>
-    <form method="post" action="staff_login.php">
-        <div class="input-group">
-            <label>Badge No.</label>
-            <input type="text" name="badge_no">
+    <form class="form" name='Login' method="post" action="staff_login.php">
+        <h2>Staff - Login</h2>
+        <?php
+            if (isset($_SESSION['message'])) {
+                echo "<div>", $_SESSION['message'], "</div>";
+                unset($_SESSION['message']);    
+            }
+        ?>
+        <div class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input type="text" name="badge_no" placeholder="Badge Number" required>
         </div>
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password">
+        <div class="input-box">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
         </div>
-        <div class="input-group">
-            <button type="submit" class="btn" name="login_staff">Login</button>
+        <div class="input-box">
+            <input type="submit" value="Login" name="login_staff">
         </div>
         <p>
             Not a member yet ? <a href="staff_register.php">Sign up</a>
         </p>
-    </form>    
+    </form> 
+
 </body>
 </html>

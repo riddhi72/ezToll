@@ -14,9 +14,12 @@
 <html>
 <head>
     <title>Rates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="style/table_data.css">
 </head>
 <body>
-	<h2>Rates</h2>
+	<h1>Rates</h1>
 	<?php
 		if (isset($_SESSION['message'])) {
 			echo "<div>", $_SESSION['message'], "</div>";
@@ -24,22 +27,22 @@
 		}
 
 	?>
-	<table>
-		<tr>
-    			<td>Sr No.</td>
-    			<td>Toll Location</td>
-        		<td>Transport</td> 
-        		<td>Amount (Rs)</td>
+	<table class="columns" style="text-align: center">
+		<tr class="name">
+    		<td class="header">Sr No.</td>
+    		<td class="header">Toll Location</td>
+        	<td class="header">Transport</td> 
+        	<td class="header">Amount (Rs)</td>
         </tr>
 	<?php 
 		while ($row = mysqli_fetch_array($result))
 		{
 	?>
-        <tr>
-    		<td><?php echo $row['pid']; ?></td>
-    		<td><?php echo $row['toll']; ?></td>
-        	<td><?php echo $row['transtype']; ?></td> 
-        	<td><?php echo $row['amt']; ?></td>
+        <tr class="name">
+    		<td class="grey"><?php echo $row['pid']; ?></td>
+    		<td class="grey"><?php echo $row['toll']; ?></td>
+        	<td class="grey"><?php echo $row['transtype']; ?></td> 
+        	<td class="grey"><?php echo $row['amt']; ?></td>
         </tr>
     <?php    
         }
