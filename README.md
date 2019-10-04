@@ -1,2 +1,3 @@
 # ezToll
-Localhost project with php7 and mySqli
+Localhost project with PHP7 and MySql.
+Made as mini-project for Web Technology and Database Management System Course.
